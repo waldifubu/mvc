@@ -33,7 +33,7 @@ namespace View;
 ?>
 </table>
 <br/><br/>
-<a href="#" id="newPizza">Neue Pizza einfügen</a><br />
+<a href="#newPizza" id="newPizza">Neue Pizza einfügen</a><br />
 
 <form action="<?=URL?>pizza/create" method="post" enctype="multipart/form-data" id="pizzaForm" style="display: none;">
 <label>Name:</label><input name="name" type="text"/><br/>

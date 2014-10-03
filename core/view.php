@@ -1,10 +1,10 @@
 <?php
+# Main View Controller
 namespace Core;
 
 class View
 {
     public $title;
-    public $noteList;
 
     public function __construct()
 	{

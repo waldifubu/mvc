@@ -6,8 +6,7 @@ use \Util\Auth;
 
 class Note extends Controller
 {
-    public $model;
-    public $view;
+    public $haveModel = true;
 
 	public function __construct() 
 	{

@@ -1,7 +1,11 @@
 <?php
-# hash
+# Hash
 namespace Util;
 
+/**
+ * Class Hash
+ * @package Util
+ */
 class Hash
 {	
 	/**

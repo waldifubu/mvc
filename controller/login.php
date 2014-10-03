@@ -5,6 +5,8 @@ use Core\Controller;
 
 class Login extends Controller
 {
+    public $haveModel = true;
+
 	function __construct() 
 	{
 		parent::__construct();	

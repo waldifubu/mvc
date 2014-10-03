@@ -25,7 +25,10 @@
  * @deprecated File deprecated in Release 2.0.0
  */
 
-// Get damn error message away. Must set TZ
+//For page load time
+define('STARTTIME', time());
+
+// Get damn error message away. Must set default TZ
 date_default_timezone_set("Europe/Berlin");
 
 

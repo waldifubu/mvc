@@ -1,5 +1,10 @@
 <?php
-class Autoloader 
+
+/**
+ * Class Autoloader
+ * Keep Autoloader as small as possible
+ */
+class Autoloader
 { 
    public static function autoload($class)
    {

@@ -5,7 +5,7 @@ use Core\Controller;
 
 class Imprint extends Controller
 {
-    public $noModel = true;
+    public $haveModel = false;
 
     function __construct()
     {

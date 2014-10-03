@@ -6,11 +6,10 @@ use \Core\Controller;
 
 class Index extends Controller
 {
-    public $noModel = true;
 
 	function __construct() 
 	{
-		parent::__construct();					
+		parent::__construct();
 	}	
 	
 	public function index() 

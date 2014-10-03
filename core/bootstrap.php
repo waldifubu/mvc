@@ -1,6 +1,11 @@
 <?php
 namespace Core;
 
+/**
+ * Class Bootstrap
+ * @package Core
+ */
+
 class Bootstrap
 {
     //<editor-fold desc="Attribute">
@@ -14,59 +19,78 @@ class Bootstrap
     /**
     * Construct Bootstrap
     *
-    * @return boolean|string
     */
     public function __construct()
     {
 
     }
 
-
+    /**
+     * Here starts the magic ^^
+     */
     public function init()
     {
+        // gets URL
         $this->_getUrl();
 
-        //Bleibt für debugging zwecke
+        //Keeps for debugging
         //var_dump($this->_url);
 
-        if (empty($this->_url[0])) //loads index page
+        if (empty($this->_url[0])) //no controller was called, loads index page
         {
             $this->_loadDefaultController();
         }
         else
-        if ($this->_loadExistingController()) $this->_callControllerMethod();
+        {
+            // First try to load controller and optional load model, if possible (TRUE)
+            if($this->_loadExistingController())
+            {
+                $this->_callControllerMethod();
+            }
+        } //Controller was given
     }
 
+    /**
+     * @param $path Sets controller path
+     */
     public function setControllerPath($path)
     {
         $this->_controllerPath = trim($path, '/').'/';
     }
 
-
+    /**
+     * @param $path Sets model path, models are optional
+     */
     public function setModelPath($path)
     {
         $this->_modelPath = trim($path, '/').'/';
     }
 
+    /**
+     * @param $path Sets path for views
+     */
     public function setViewPath($path)
     {
         $this->_viewPath = trim($path, '/').'/';
     }
 
+    /**
+     * Seperates URL data in a String
+     */
     private function _getUrl()
     {
         $url = @filter_var($_GET['url'], FILTER_SANITIZE_URL);
         $this->_url = @explode('/', rtrim($url,'/'));
     }
 
-    // /mvc/index
+    // Call: /mvc/index OR /mvc
     private function _loadDefaultController()
     {        
         $this->_controller = new \Controller\Index();
         $this->_controller->index();
     }
 
-    // /mvc/XXX
+    // Call: /mvc/XXX
     private function _loadExistingController()
     {
         $nameClass = 'Controller\\' . $this->_url[0];
@@ -74,23 +98,32 @@ class Bootstrap
         $pfad = str_replace('\\', DIRECTORY_SEPARATOR , strtolower($nameClass)) . '.php';
         if (file_exists($pfad))
         {
-            //Prüfen ob Klasse enthalten ist, dann wird Autoloader aufgerufen
+            // Check if class exists in file, then Autoloader is called
             if(class_exists($nameClass))
-            $this->_controller = new $nameClass();
+            {
+                $this->_controller = new $nameClass();
+
+                if(isset($this->_controller->haveModel) && $this->_controller->haveModel == true)
+                {
+                    // Model not found
+                    if (!file_exists($this->_modelPath.'\\'. $this->_url[0] . '_model.php'))
+                    {
+                        $this->_error(2);
+                        return false;
+                    }
+
+                    $this->_controller->loadModel($this->_url[0], $this->_modelPath);
+                }
+                return true;
+            }
             else
             {
+                // Class isn't found
                 $this->_error(1);
                 return false;
             }
-
-            if(isset($this->_controller->noModel) && $this->_controller->noModel == true)
-            {
-                return true;
-            }
-            $this->_controller->loadModel($this->_url[0], $this->_modelPath);
-            return true;
         }
-        else
+        else // File not found
         {
             $this->_error(404);
         }
@@ -133,6 +166,9 @@ class Bootstrap
         }
     }
 
+    /**
+     * @param int $arg Errorcode
+     */
     private function _error($arg = 0)
     {
         $this->_controller = new \Controller\Error();

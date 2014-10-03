@@ -8,10 +8,10 @@ use DateTime;
 <form method="post" action="<?=URL?>note/create">
 	<label>Titel</label><input style="position:relative;left:0px" type="text" placeholder="Titel" name="title"/><br />
 	<label>Inhalt</label>
-    <textarea style="position:relative;left:8px" name="content" rows="3" cols="50" placeholder="Text"></textarea>
+    <textarea style="position:relative;top: 4px;left:10px" name="content" rows="3" cols="50" placeholder="Text"></textarea>
     <br />
     
-	<label>&nbsp;</label><input type="submit"/>
+	<label></label><input type="submit"/>
 </form>
 
 <hr />

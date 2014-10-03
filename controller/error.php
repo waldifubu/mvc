@@ -5,7 +5,7 @@ use \Core\Controller;
 
 class Error extends Controller
 {
-    public $noModel = true;
+    public $haveModel = true;
     public $errorCode; //def. is null
 
 	function __construct() 
@@ -19,6 +19,8 @@ class Error extends Controller
 		switch($this->errorCode)
 		{
             case   1: $this->view->msg = "Class doesn't exist";
+                break;
+            case   2: $this->view->msg = "Model doesn't exist";
                 break;
             case 404: $this->view->msg = $this->notFound();
                 break;

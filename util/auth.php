@@ -9,8 +9,24 @@ class Auth
         {
             session_start();
         }
-		$logged = $_SESSION['loggedIn'];		
-		if ($logged == false) 
+
+        if (isset($_SESSION['timeout']))
+        {
+            $logged = $_SESSION['loggedIn'];
+
+            if (time() > $_SESSION['timeout'])
+            {
+                $logged = false;
+            }
+            else
+            {
+                $_SESSION['timeout'] = time() + 5 * 60;
+                $logged = true;
+            }
+        }
+
+
+        if ($logged == false)
 		{
 			session_destroy();
 		    header('Location: ' . URL . 'login');

@@ -32,6 +32,7 @@ class Login_Model extends Model
 			Session::set('loggedIn', true);
             Session::set('userid', $data['userid']);
             Session::set('username', $_POST['login']);
+            Session::set('timeout', time() + 300);
 			header('Location: ../dashboard');
 		} else {
 			header('Location: ../login');
