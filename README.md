@@ -1,4 +1,4 @@
 mvc
 ===
 
-PHP MVC Example
+Study PHP MVC Example with jQuery applications inside
