@@ -54,7 +54,7 @@ class Database extends PDO
 	
 	public function update($table, $data, $where)
 	{
-		$fieldDetails = NULL;
+		$fieldDetails = null;
 		foreach($data as $key=> $value) {
 			$fieldDetails .= "`$key`=:$key,";
 		}

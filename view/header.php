@@ -1,6 +1,7 @@
 <?php
 use \Core\Session;
 
+Session::init();
 ?>
 <!doctype html>
 <html>
@@ -10,7 +11,7 @@ use \Core\Session;
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="<?=URL?>public/css/default.css"/>
     <link rel="stylesheet" href="<?=URL?>public/css/bootstrap.min.css" />
-	<script src="<?=URL?>public/js/jquery.js"></script>
+	<script src="<?=URL?>public/js/jquery.min.js"></script>
     <script src="<?=URL?>public/js/bootstrap.min.js"></script>        
 	<script src="<?=URL?>public/js/custom.js"></script>
 	<?php
@@ -25,9 +26,6 @@ use \Core\Session;
 </head>
 <body>
 
-<?php 
-Session::init(); 
-?>
 <header id="header">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-collapse">

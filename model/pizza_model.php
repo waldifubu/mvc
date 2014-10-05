@@ -21,6 +21,11 @@ class Pizza_Model extends Model
 	{	    	
 		$this->db->insertTypes(PIZZA_TAB, $data, $types);	
 	}
+
+    public function change($data)
+    {
+        $this->db->update(PIZZA_TAB, $data, "`id` = {$data['id']}");
+    }
     
     public function delete($pizza)
 	{	        

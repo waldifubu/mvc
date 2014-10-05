@@ -13,7 +13,7 @@ class Pizza extends Controller
 	{
 		parent::__construct();
 		Auth::handleLogin();
-        $this->view->js = array('pizza/js/default.js');
+        $this->view->js = array('pizza/js/default.js','pizza/js/jquery.jeditable.min.js');
 	}
     
     public function index()
@@ -66,6 +66,23 @@ class Pizza extends Controller
         if (isset($_FILES['image'])) fclose($fp);
 		header('location: ' . URL . 'pizza');       
 	}
+
+    public function changeValues()
+    {
+        $data = [
+            'id' => $_POST['id'],
+            $_POST['column'] => $_POST['value']
+        ];
+
+        if($_POST['column'] == 'price')
+        {
+            $number = str_replace(',','.',$data['price']);
+            $data['price'] = number_format($number, 2, '.', '');
+        }
+
+        echo $_POST['value'];
+        $this->model->change($data);
+    }
     
     public function delete($pizza)
 	{

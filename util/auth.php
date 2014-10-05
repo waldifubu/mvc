@@ -20,7 +20,7 @@ class Auth
             }
             else
             {
-                $_SESSION['timeout'] = time() + 5 * 60;
+                $_SESSION['timeout'] = time() + 15 * 60;
                 $logged = true;
             }
         }

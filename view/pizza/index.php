@@ -1,39 +1,44 @@
 <?php
 namespace View;
 
-//include 'cover.php';
 ?>
 
 <h1>Pizzaliste</h1>
 <hr />
 
-<table width="100%">
+<p><a id="newPizzaUp" href="#newPizza">Neue Pizza einfügen</a></p>
+<small style="float: right">Mittels Doppelklick &Auml;nderungen m&ouml;glich</small>
+<table width="100%" id="mainTable" class="table table-striped table-bordered">
 <th>Name</th>
 <th>Bild</th>
-<th>Bearbeiten</th>
 <th>Menge</th>
 <th>Preis</th>
+<th></th>
 <?php	
 	foreach($this->pizzaList as $key => $value)
 	{		
-		echo '<tr><td>';
-		echo $value['name'].'</td><td>';
+		echo '<tr data-uid='.$value['id'].'><td>';
+		echo '<span class="dblclick" datatype="name">'.$value['name'].'</span></td><td>';
+
         $bild = 'uploads/' . $value['id'].'.png';
         $crc = crc32($value['picture']);
         if(!file_exists($bild) || !$crc == crc32($bild))
-        file_put_contents($bild, $value['picture']);        
-        echo '<img src="'.$bild.'" height="200"></td><td>Bild<br/>';
-        echo '<a href="'.URL.'pizza/edit/'.$value['id'].'"><span class="glyphicon glyphicon-pencil">';
-        echo '<a style="left:20px;position: relative" class="delete" href="'.URL.'pizza/delete/'.$value['id'].'"><span class="glyphicon glyphicon-trash red"></a>';
-        echo '</td><td>';
-		echo $value['amount'].'</td><td>';        
-        echo $value['price'] . ' &euro;';
+        file_put_contents($bild, $value['picture']);
+
+        echo '<img src="'.$bild.'" height="200"><a href="'.URL.'pizza/edit/'.$value['id'].'">';
+        echo '<span class="glyphicon glyphicon-pencil" style="vertical-align: bottom"></span></td>';
+        echo '<td><span class="dblclick" datatype="amount">';
+		echo $value['amount'].'</span></td>';
+        echo '<td><span class="dblclick" datatype="price">';
+        echo $value['price'].'</span>&euro;</td><td>';
+        echo '<a class="delete" href="'.URL.'pizza/delete/'.$value['id'].'"><span class="glyphicon glyphicon-trash red"></span></a>';
 		echo '</td></tr>';        
 	}	
 ?>
 </table>
-<br/><br/>
+<p>
 <a href="#newPizza" id="newPizza">Neue Pizza einfügen</a><br />
+</p>
 
 <form action="<?=URL?>pizza/create" method="post" enctype="multipart/form-data" id="pizzaForm" style="display: none;">
 <label>Name:</label><input name="name" type="text"/><br/>
@@ -45,7 +50,26 @@ style="position: relative;left :10px;border: 0px solid"/><br/>
 </form>
 
 <script>
-$('.delete').click(function() {                    
+$('.delete').click(function() {
     return confirm("Pizza wirklich löschen?");
 });
+
+$(".dblclick").dblclick(function() {
+    var $this = $(this);
+    $this.editable("pizza/changeValues", {
+        id         : "ID als Bez.",
+        name       : "value",
+        submitdata : {column : $(this).attr('datatype'), id : $(this).closest('tr').attr("data-uid")},
+        indicator : "<img src='public/img/indicator.gif'>",
+        tooltip   : "Doppelklicken um zu bearbeiten...",
+        submit : "OK",
+        onblur : "cancel",
+        style  : "inherit",
+        width: "60px"
+    });
+});
+
+//alert($(this).closest('tr').prop('id'));
+//EQ: alert($(this).parents('tr').attr("id"));
+
 </script>
