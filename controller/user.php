@@ -6,6 +6,8 @@ use \Util\Auth;
 
 class User extends Controller
 {
+    public $haveModel = true;
+
 	public function __construct() 
 	{
 		parent::__construct();

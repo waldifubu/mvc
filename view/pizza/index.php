@@ -6,9 +6,9 @@ namespace View;
 <h1>Pizzaliste</h1>
 <hr />
 
-<p><a id="newPizzaUp" href="#newPizza">Neue Pizza einfügen</a></p>
+<p><a id="newPizzaUp" href="#newPizza">Neue Pizza einf&uuml;gen</a></p>
 <small style="float: right">Mittels Doppelklick &Auml;nderungen m&ouml;glich</small>
-<table width="100%" id="mainTable" class="table table-striped table-bordered">
+<table data-toggle="table" width="100%" id="mainTable" class="table table-striped table-bordered">
 <th>Name</th>
 <th>Bild</th>
 <th>Menge</th>
@@ -37,7 +37,7 @@ namespace View;
 ?>
 </table>
 <p>
-<a href="#newPizza" id="newPizza">Neue Pizza einfügen</a><br />
+<a href="#newPizza" id="newPizza">Neue Pizza einf&uuml;gen</a><br />
 </p>
 
 <form action="<?=URL?>pizza/create" method="post" enctype="multipart/form-data" id="pizzaForm" style="display: none;">
@@ -51,7 +51,7 @@ style="position: relative;left :10px;border: 0px solid"/><br/>
 
 <script>
 $('.delete').click(function() {
-    return confirm("Pizza wirklich löschen?");
+    return confirm("Pizza wirklich loeschen?");
 });
 
 $(".dblclick").dblclick(function() {

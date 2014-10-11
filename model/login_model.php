@@ -13,7 +13,7 @@ class Login_Model extends Model
 	}
 	
 	public function run()
-	{		        
+	{
 		$sql = 'select userid, role from users where login = :login and password = :pass';
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(

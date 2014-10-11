@@ -106,7 +106,7 @@ class Bootstrap
                 if(isset($this->_controller->haveModel) && $this->_controller->haveModel == true)
                 {
                     // Model not found
-                    if (!file_exists($this->_modelPath.'\\'. $this->_url[0] . '_model.php'))
+                    if (!file_exists($this->_modelPath.DIRECTORY_SEPARATOR. $this->_url[0] . '_model.php'))
                     {
                         $this->_error(2);
                         return false;

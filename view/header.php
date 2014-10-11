@@ -7,19 +7,22 @@ Session::init();
 <html>
 <head>
 	<title><?=(isset($this->title)) ? $this->title : 'MVC Kramm'?></title>
-	<meta charset="utf-8">
+	<meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="<?=URL?>public/css/default.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="<?=URL?>public/img/gameboy.ico"/>
     <link rel="stylesheet" href="<?=URL?>public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?=URL?>public/css/default.css"/>
+
 	<script src="<?=URL?>public/js/jquery.min.js"></script>
     <script src="<?=URL?>public/js/bootstrap.min.js"></script>        
 	<script src="<?=URL?>public/js/custom.js"></script>
+
 	<?php
 	if (isset($this->js))
 	{
-		foreach($this->js as $js)
+		foreach($this->js as $jsfile)
         {
-			echo '<script src="'.URL.'view/'.$js.'"></script>';
+			echo '<script src="'.URL.'view/'.$jsfile.'"></script>';
 		}						
 	}
 	?>
