@@ -1,8 +1,7 @@
 <?php
 namespace Controller;
 
-use \Core\Controller;
-use \Util\Auth;
+use Core\Controller;
 
 class Note extends Controller
 {
@@ -11,7 +10,6 @@ class Note extends Controller
 	public function __construct() 
 	{
 		parent::__construct();
-		Auth::handleLogin();
 	}
     
 	

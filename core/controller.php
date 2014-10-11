@@ -4,6 +4,7 @@ namespace Core;
 
 use Core\View;
 use Core\Model;
+use Util\Auth;
 
 class Controller
 {
@@ -13,7 +14,8 @@ class Controller
 	function __construct()
 	{	        
 		$this->view = new View();
-	}
+        Auth::handleLogin();
+    }
 	
 	public function loadModel($name, $modelPath)
 	{	

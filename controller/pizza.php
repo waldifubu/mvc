@@ -1,8 +1,7 @@
 <?php
 namespace Controller;
 
-use \Core\Controller;
-use \Util\Auth;
+use Core\Controller;
 use PDO;
 
 class Pizza extends Controller
@@ -12,7 +11,6 @@ class Pizza extends Controller
     public function __construct() 
 	{
 		parent::__construct();
-		Auth::handleLogin();
         $this->view->js = array('pizza/js/default.js','pizza/js/jquery.jeditable.min.js');
 	}
     
@@ -57,7 +55,10 @@ class Pizza extends Controller
             'price' => $_POST['price']
             
         ];
-        
+
+        /**
+         * Because of use from LOB, in other cases you don't need it
+         */
         $types = [
             PDO::PARAM_STR, PDO::PARAM_LOB, PDO::PARAM_INT, PDO::PARAM_STR
         ];
@@ -74,6 +75,7 @@ class Pizza extends Controller
             $_POST['column'] => $_POST['value']
         ];
 
+        // For currency numbers
         if($_POST['column'] == 'price')
         {
             $number = str_replace(',','.',$data['price']);

@@ -2,6 +2,7 @@
 namespace Controller;
 
 use Core\Controller;
+use Core\View;
 
 class Login extends Controller
 {
@@ -9,7 +10,7 @@ class Login extends Controller
 
 	function __construct() 
 	{
-		parent::__construct();	
+        parent::$this->view = new View();
 	}
 	
 	public function index() 

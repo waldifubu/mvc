@@ -40,12 +40,12 @@ namespace View;
 <a href="#newPizza" id="newPizza">Neue Pizza einf&uuml;gen</a><br />
 </p>
 
-<form action="<?=URL?>pizza/create" method="post" enctype="multipart/form-data" id="pizzaForm" style="display: none;">
+<form action="<?=URL?>pizza/create" method="post" accept-charset="UTF-8" enctype="multipart/form-data" id="pizzaForm" style="display: none;">
 <label>Name:</label><input name="name" type="text"/><br/>
 <label>Bild:</label><br/><input type="file" size="20" accept="image/*" name="image" 
 style="position: relative;left :10px;border: 0px solid"/><br/>
-<label>Menge:</label><input name="amount" type="text" size="2"/><br/>
-<label>Preis:</label><input name="price" type="text" size="2"/> &euro;<br/>
+<label>Menge:</label><input name="amount" type="text" size="2" placeholder="1"/><br/>
+<label>Preis:</label><input name="price" type="text" size="4" placeholder="5.95"/> &euro;<br/>
 <label></label><input type="submit" value="erstellen"/>
 </form>
 

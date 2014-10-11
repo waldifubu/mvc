@@ -2,7 +2,6 @@
 namespace Controller;
 
 use \Core\Controller;
-use \Util\Auth;
 use \Core\Session;
 
 class Dashboard extends Controller
@@ -12,7 +11,6 @@ class Dashboard extends Controller
 	public function __construct() 
 	{
 		parent::__construct();
-        Auth::handleLogin();        
 		$this->view->js = array('dashboard/js/default.js');
 	}
 	

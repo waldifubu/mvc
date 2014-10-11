@@ -1,5 +1,6 @@
 <?php
 use \Core\Session;
+use Util\Auth;
 
 Session::init();
 ?>
@@ -12,7 +13,6 @@ Session::init();
     <link rel="shortcut icon" type="image/x-icon" href="<?=URL?>public/img/gameboy.ico"/>
     <link rel="stylesheet" href="<?=URL?>public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?=URL?>public/css/default.css"/>
-
 	<script src="<?=URL?>public/js/jquery.min.js"></script>
     <script src="<?=URL?>public/js/bootstrap.min.js"></script>        
 	<script src="<?=URL?>public/js/custom.js"></script>

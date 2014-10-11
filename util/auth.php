@@ -1,13 +1,15 @@
 <?php
 namespace Util;
 
+use Core\Session;
+
 class Auth
 {
     public static function handleLogin()
     {                   
         if(!isset($_SESSION))
         {
-            session_start();
+            Session::init();
         }
 
         if (isset($_SESSION['timeout']))
