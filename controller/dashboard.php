@@ -7,6 +7,7 @@ use \Core\Session;
 class Dashboard extends Controller
 {
     public $haveModel = true;
+    public $needLogin = true;
 
 	public function __construct() 
 	{

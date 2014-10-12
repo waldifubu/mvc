@@ -6,6 +6,7 @@ use Core\Controller;
 class Note extends Controller
 {
     public $haveModel = true;
+    public $needLogin = true;
 
 	public function __construct() 
 	{

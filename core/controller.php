@@ -2,19 +2,19 @@
 # Main Controller
 namespace Core;
 
-use Core\View;
-use Core\Model;
 use Util\Auth;
 
 class Controller
 {
-    public $view;
-    public $model;
+    protected $view;
+    protected $model;
+    protected $needLogin;
 
 	function __construct()
 	{	        
 		$this->view = new View();
-        Auth::handleLogin();
+        if($this->needLogin)
+            Auth::handleLogin();
     }
 	
 	public function loadModel($name, $modelPath)

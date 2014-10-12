@@ -10,7 +10,7 @@ class Login extends Controller
 
 	function __construct() 
 	{
-        parent::$this->view = new View();
+        $this->view = new View();
 	}
 	
 	public function index() 
