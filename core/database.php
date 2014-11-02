@@ -8,8 +8,13 @@ class Database extends PDO
 {
 	public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS)
 	{
-		parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME, $DB_USER, $DB_PASS);
-		parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		
+        try {
+            parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
+            parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $ex) {
+            echo '<h3><br />Catch Connect Error--->>> ' . $ex->getMessage() . '<br /></h3>';
+            exit;
+        }
 	}
     
     public function select($sql, $array = array(), $fetchmode = PDO::FETCH_ASSOC)
@@ -44,9 +49,9 @@ class Database extends PDO
         
 		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
 		
-        $anzahl = 0;                
+        $counter = 0;
 		foreach ($data as $key => $value) {
-			$sth->bindValue(":$key", $value, $types[$anzahl++]);            
+			$sth->bindValue(":$key", $value, $types[$counter++]);
 		}
 		
 		$sth->execute();        
