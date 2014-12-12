@@ -16,6 +16,8 @@ class Login extends Controller
 	public function index() 
 	{				
         $this->view->title = 'Login';
+        $this->view->js = array('login/js/default.js', '../public/js/jquery.growl.js','../public/js/jquery-ui.min.js');
+        $this->view->css = array('../public/css/jquery.growl.css');
 		$this->view->render('login/index');
 	}
 	
@@ -23,4 +25,9 @@ class Login extends Controller
 	{	
 		$this->model->run();
 	}
+
+    public function checkLogin()
+    {
+        $this->model->check();
+    }
 }

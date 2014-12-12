@@ -17,6 +17,16 @@ Session::init();
     <script src="<?=URL?>public/js/bootstrap.min.js"></script>        
 	<script src="<?=URL?>public/js/custom.js"></script>
 
+    <?php
+    if (isset($this->css))
+    {
+        foreach($this->css as $cssfile)
+        {
+            echo ' <link rel="stylesheet" href="'.URL.'view/'.$cssfile.'"/>';
+        }
+    }
+    ?>
+
 	<?php
 	if (isset($this->js))
 	{
