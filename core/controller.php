@@ -3,11 +3,16 @@
 namespace Core;
 
 use Util\Auth;
-
+use Core\Model;
 class Controller
 {
+    /* @var $view View */
     protected $view;
+
+    /* @var $model Model */
     protected $model;
+
+    /* @var bool */
     protected $needLogin;
 
 	function __construct()

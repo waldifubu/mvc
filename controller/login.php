@@ -20,11 +20,6 @@ class Login extends Controller
         $this->view->css = array('../public/css/jquery.growl.css');
 		$this->view->render('login/index');
 	}
-	
-	public function run() 		
-	{	
-		$this->model->run();
-	}
 
     public function checkLogin()
     {

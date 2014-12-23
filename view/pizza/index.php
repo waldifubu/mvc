@@ -6,7 +6,7 @@ namespace View;
 <h1>Pizzaliste</h1>
 <hr />
 
-<p><a id="newPizzaUp" href="#newPizza">Neue Pizza einf&uuml;gen</a></p>
+<p><a id="newPizzaUp" style="cursor: pointer">Neue Pizza einf&uuml;gen</a></p>
 <small style="float: right">Mittels Doppelklick &Auml;nderungen m&ouml;glich</small>
 <table data-toggle="table" width="100%" id="mainTable" class="table table-striped table-bordered">
 <th>Name</th>
@@ -18,26 +18,31 @@ namespace View;
 	foreach($this->pizzaList as $key => $value)
 	{		
 		echo '<tr data-uid='.$value['id'].'><td>';
-		echo '<span class="dblclick" datatype="name">'.$value['name'].'</span></td><td>';
+		echo '<span class="dblclick" data-type="name">'.$value['name'].'</span></td><td>';
 
         $bild = 'uploads/' . $value['id'].'.png';
         $crc = crc32($value['picture']);
-        if(!file_exists($bild) || !$crc == crc32($bild))
+        if(!file_exists($bild) || $crc != crc32($bild))
         file_put_contents($bild, $value['picture']);
 
-        echo '<img src="'.$bild.'" height="200"><a href="'.URL.'pizza/edit/'.$value['id'].'">';
-        echo '<span class="glyphicon glyphicon-pencil" style="vertical-align: bottom"></span></td>';
-        echo '<td><span class="dblclick" datatype="amount">';
+        echo '<img src="'.$bild.'" height="200" title="'.$value['name'].'" id="pic'.$value['id'].'">';
+        echo '<button class="button-file" title="Bild tauschen" style="vertical-align: bottom"';
+        echo 'data-target="pic'.$value['id'].'"><span class="glyphicon glyphicon-pencil"></span></button>';
+        echo '</td>';
+        echo '<td><span class="dblclick" data-type="amount">';
 		echo $value['amount'].'</span></td>';
-        echo '<td><span class="dblclick" datatype="price">';
+        echo '<td><span class="dblclick" data-type="price">';
         echo $value['price'].'</span>&euro;</td><td>';
         echo '<a class="delete" href="'.URL.'pizza/delete/'.$value['id'].'"><span class="glyphicon glyphicon-trash red"></span></a>';
 		echo '</td></tr>';        
 	}	
 ?>
 </table>
+
+<input id="file-input" type="file" />
+
 <p>
-<a href="#newPizza" id="newPizza">Neue Pizza einf&uuml;gen</a><br />
+<a id="newPizza" style="cursor: pointer">Neue Pizza einf&uuml;gen</a><br />
 </p>
 
 <form action="<?=URL?>pizza/create" method="post" accept-charset="UTF-8" enctype="multipart/form-data" id="pizzaForm" style="display: none;">
@@ -49,27 +54,4 @@ style="position: relative;left :10px;border: 0px solid"/><br/>
 <label></label><input type="submit" value="erstellen"/>
 </form>
 
-<script>
-$('.delete').click(function() {
-    return confirm("Pizza wirklich loeschen?");
-});
-
-$(".dblclick").dblclick(function() {
-    var $this = $(this);
-    $this.editable("pizza/changeValues", {
-        id         : "ID als Bez.",
-        name       : "value",
-        submitdata : {column : $(this).attr('datatype'), id : $(this).closest('tr').attr("data-uid")},
-        indicator : "<img src='public/img/indicator.gif'>",
-        tooltip   : "Doppelklicken um zu bearbeiten...",
-        submit : "OK",
-        onblur : "cancel",
-        style  : "inherit",
-        width: "60px"
-    });
-});
-
-//alert($(this).closest('tr').prop('id'));
-//EQ: alert($(this).parents('tr').attr("id"));
-
-</script>
+<div id='goup'></div>

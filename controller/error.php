@@ -26,7 +26,7 @@ class Error extends Controller
                 break;
             case 999: $this->view->msg = "Unbekannter Fehler";
 		 		break;
-		 	case 1404: $this->view->msg = "Methode unbekannt";
+		 	case 1404: $this->view->msg = "unbekannte Methode";
 		 		break;
 		 	default: $this->view->msg = "Nöx";
 		 		break;

@@ -41,7 +41,10 @@ class Database extends PDO
 		
 		$sth->execute();
 	}
-	
+
+	/**
+	 * In case we add blobs
+	 */
     public function insertTypes($table, $data, $types)
 	{			
 		$fieldNames = implode('`, `', array_keys($data));
@@ -55,7 +58,34 @@ class Database extends PDO
 		}
 		
 		$sth->execute();        
-	}	    
+	}
+
+	public function changeBLOB($table, $data, $types, $where)
+	{
+		$fieldDetails = null;
+		foreach($data as $key=> $value) {
+			$fieldDetails .= "`$key`=:$key,";
+		}
+		$fieldDetails = rtrim($fieldDetails, ',');
+
+		$sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
+
+		$counter = 0;
+		foreach ($data as $key => $value) {
+			$sth->bindValue(":$key", $value, $types[$counter++]);
+		}
+
+		if(is_writable("kramm.txt"))
+		{
+			$handle = fopen("kramm.txt", 'a+');
+			fputs($handle, $sth->errorInfo()."\r\n");
+			fclose($handle);
+		}
+
+
+		$sth->execute();
+	}
+
 	
 	public function update($table, $data, $where)
 	{

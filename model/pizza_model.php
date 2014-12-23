@@ -31,4 +31,15 @@ class Pizza_Model extends Model
 	{	        
 		$this->db->delete(PIZZA_TAB, "`id` = $pizza");						
 	}
+
+	public function selectOne($column, $id)
+	{
+		return $this->db->select('select '.$column.' from ' . PIZZA_TAB. ' where id = '.$id);
+	}
+
+	public function changeBLOB($data, $types)
+	{
+		$this->db->changeBLOB(PIZZA_TAB, $data, $types , "`id` = {$data['id']}");
+	}
+
 }    

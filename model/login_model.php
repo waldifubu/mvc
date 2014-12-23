@@ -11,35 +11,6 @@ class Login_Model extends Model
 	{
 		parent::__construct();
 	}
-	
-	public function run()
-	{
-        if(!$_POST['login'] || !$_POST['password']) header('Location: ../login');
-		$sql = 'select userid, role from users where login = :login and password = :pass';
-		$sth = $this->db->prepare($sql);
-		$sth->execute(array(
-		':login' => $_POST['login'],
-		':pass' => Hash::create('sha256', $_POST['password'], HASH_PASS_KEY)
-		));
-		
-		$data = $sth->fetch();		
-		
-		$count = $sth->rowCount();
-		
-		if ($count > 0)
-		{
-			Session::init();
-			Session::set('role', $data['role']);
-			Session::set('loggedIn', true);
-            Session::set('userid', $data['userid']);
-            Session::set('username', $_POST['login']);
-            Session::set('timeout', time() + 300);
-			header('Location: ../dashboard');
-		} else {
-			header('Location: ../login');
-		}
-	}
-
 
     public function check()
     {
@@ -68,6 +39,5 @@ class Login_Model extends Model
         $logged = (Session::get('loggedIn') == true) ? true : false;
         $result = ["result" => $logged];
         echo json_encode($result);
-
     }
 }
