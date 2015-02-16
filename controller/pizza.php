@@ -9,10 +9,16 @@ class Pizza extends Controller
     public $haveModel = true;
     public $needLogin = true;
 
-    public function __construct() 
+    /**
+     * Constructor for Pizza Module
+     */
+    public function __construct()
 	{
 		parent::__construct();
-        $this->view->js = array('pizza/js/default.js','pizza/js/jquery.jeditable.min.js','../public/js/jquery.goup.min.js', '../public/js/jquery.growl.js');
+        $this->view->js = array('pizza/js/default.js',
+            'pizza/js/jquery.jeditable.min.js',
+            '../public/js/jquery.goup.min.js', '../public/js/jquery.growl.js');
+
         $this->view->css = array('pizza/css/default.css', '../public/css/jquery.growl.css');
 	}
     

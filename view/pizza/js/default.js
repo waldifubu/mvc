@@ -45,13 +45,14 @@ $(function() {
             data: form_data,
             type: 'POST',
             processData: false,
-            contentType: false
-        }).done(function(response) {
-            $.growl.notice({ title: "Bildänderung", message: "erfolgreich..." })
-          .fail(function(response) {
-            $.growl.error({ title: "Probleme", message: "Fehler beim Upload" });
+            contentType: false})
+            .done(function(response) {
+                alert(respsonse);
+                $.growl.notice({title: "Bildänderung", message: "Erfolgreich hochgeladen."});
+            })
+            .fail(function (response) {
+                $.growl.error({title: "Probleme", message: "Fehler beim Upload"});
             });
-        });
         previewImage(this);
     });
 

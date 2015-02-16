@@ -38,6 +38,7 @@ class Login_Model extends Model
 
         $logged = (Session::get('loggedIn') == true) ? true : false;
         $result = ["result" => $logged];
+        header('Content-Type: application/json; charset=utf-8');
         echo json_encode($result);
     }
 }

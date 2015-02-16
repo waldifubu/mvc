@@ -17,9 +17,9 @@ echo "MAIN - Login";
 </style>
 
 <div id="loginBox">
-<form action="login/checkLogin" method="post" id="login">
-	<label>Login</label><input type="text" name="login" id="formLogin" required data-errormessage-value-missing="Bitte ausfüllen"/><br>
-	<label>Kennwort</label><input type="password" name="password" id="formPass" required data-errormessage-value-missing="Bitte ausfüllen"/><br>
+<form action="login/checkLogin" method="post" id="login" accept-charset="UTF-8">
+	<label>Login</label><input type="text" name="login" id="formLogin" required data-errormessage-value-missing="Bitte Benutzernamen angeben"/><br>
+	<label>Kennwort</label><input type="password" name="password" id="formPass" required data-errormessage-value-missing="Bitte Passwortfeld ausfüllen"/><br>
 	<br />
 	<label></label><input type="submit" id="subby"/>
 </form>

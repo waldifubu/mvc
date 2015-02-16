@@ -12,7 +12,7 @@ $(function() {
                 setTimeout(function() {
                     $.growl({ title: "Login erfolgreich", message: "Weiterleitung..." });
                     window.location.href = "/mvc/dashboard";
-                }, 3000);
+                }, 2300);
             }
 
             if (out.result == false)  {

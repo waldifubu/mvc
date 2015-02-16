@@ -2,6 +2,12 @@
 # php_value error_reporting 9999
 # php_flag session.auto_start 1
 
+# ForceType 'text/html; charset=UTF-8'
+# AddCharset UTF-8 .html
+# AddType 'text/html; charset=UTF-8' html
+
+AddDefaultCharset UTF-8
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /mvc/
@@ -10,5 +16,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
+# ^
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 </IfModule>

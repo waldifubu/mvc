@@ -20,6 +20,7 @@ class Dashboard_Model extends Model
 		$sth->execute(array(':text' => $_POST['text']));		
 		*/
 		$data = array('text' => $_POST['text'], 'id' => $this->db->lastInsertId());
+		header('Content-Type: application/json; charset=utf-8');
 		echo json_encode($data);
 	}
 	
@@ -30,7 +31,8 @@ class Dashboard_Model extends Model
         $sth = $this->db->prepare($sql);
 		$sth->setFetchMode(PDO::FETCH_ASSOC);
 		$sth->execute();
-		$data = $sth->fetchAll();*/        
+		$data = $sth->fetchAll();*/
+		header('Content-Type: application/json; charset=utf-8');
 		echo json_encode($this->db->select('select * from data'));
 	}
 	

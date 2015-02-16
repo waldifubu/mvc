@@ -23,6 +23,12 @@ class Login extends Controller
 
     public function checkLogin()
     {
+        // prevent direct access
+        $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+        if(!$isAjax) {
+            $user_error = 'Access denied - not an AJAX request...';
+            trigger_error($user_error, E_USER_ERROR);
+        }
         $this->model->check();
     }
 }

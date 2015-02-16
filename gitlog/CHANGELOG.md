@@ -8,6 +8,8 @@ Auto-generated from Git log.
  * [master](#master)
 
 ## [master](../../tree/master)
+ * [f77977c113](../../commit/f77977c113dd2efef60655bf99b610d745cd2f58) 2014-12-23T13:01:47+00:00 (Waldemar Dell) - tool to see changelog
+ * [b128c35605](../../commit/b128c35605c03a080d4c117ac6510995e0ad558e) 2014-12-23T12:58:25+00:00 (Waldemar Dell) - changed pics in pizza on the fly
  * [0ac636c81f](../../commit/0ac636c81f284ef2d92fe5d57946e21e32a1b5c2) 2014-12-12T21:18:10+00:00 (Waldemar Dell) - updated login&comma; looks nicer
  * [5180594204](../../commit/51805942047914fa4462294f7caaa282c7f3f236) 2014-11-02T14:00:15+00:00 (Waldemar Dell) - little fixes
  * [d546d3caa6](../../commit/d546d3caa6ca467979bec8de2f2a6e6dc72d29fd) 2014-10-12T21:24:48+00:00 (Waldemar Dell) - changes on login
