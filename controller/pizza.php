@@ -137,5 +137,5 @@ class Pizza extends Controller
 		$this->model->delete($pizza);
 		header('location: ' . URL . 'pizza');
 	}
-      
+
 }

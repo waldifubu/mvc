@@ -1,5 +1,7 @@
 <?php
+
 namespace Core;
+use Controller;
 
 /**
  * Class Bootstrap
@@ -30,13 +32,13 @@ class Bootstrap
      */
     public function init()
     {
-        // gets URL
+        // gets URL query
         $this->_getUrl();
 
         //Keeps for debugging
         //var_dump($this->_url);
 
-        if (empty($this->_url[0])) //no controller was called, loads index page
+        if (empty($this->_url[0])) //no controller was called, so loads index page
         {
             $this->_loadDefaultController();
         }
@@ -45,6 +47,7 @@ class Bootstrap
             // First try to load controller and optional load model, if possible (TRUE)
             if($this->_loadExistingController())
             {
+
                 $this->_callControllerMethod();
             }
         } //Controller was given
@@ -86,7 +89,7 @@ class Bootstrap
     // Call: /mvc/index OR /mvc
     private function _loadDefaultController()
     {        
-        $this->_controller = new \Controller\Index();
+        $this->_controller = new Controller\Index();
         $this->_controller->index();
     }
 
@@ -103,7 +106,7 @@ class Bootstrap
             {
                 $this->_controller = new $nameClass();
 
-                if(isset($this->_controller->haveModel) && $this->_controller->haveModel == true)
+                if(isset($this->_controller->haveModel) && $this->_controller->haveModel)
                 {
                     // Model not found
                     if (!file_exists($this->_modelPath.DIRECTORY_SEPARATOR. $this->_url[0] . '_model.php'))
@@ -142,8 +145,7 @@ class Bootstrap
         url[1] = Method
         url[2] = Parameter
         url[3] = Parameter
-        url[4] = Parameter
-        ...
+        ..
         */
         $length = count($this->_url);
 
@@ -157,7 +159,7 @@ class Bootstrap
         }
         else {
             if (method_exists($this->_controller, $this->_url[1]) === false) $this->_error(1404);
-            $params = "";
+            $params = '';
             for ($i = 2; $i < $length; $i++) {
                 $params .= $this->_url[$i].',';
             }
@@ -171,7 +173,7 @@ class Bootstrap
      */
     private function _error($arg = 0)
     {
-        $this->_controller = new \Controller\Error();
+        $this->_controller = new Controller\Error();
         $this->_controller->errorCode = $arg;
         $this->_controller->index();
     }

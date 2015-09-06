@@ -42,7 +42,9 @@ $cupcake->Nuts('10')
 
 var_dump($cupcake);
 
-ini_set('xdebug.auto_trace', 'On');
+//ini_set('xdebug.auto_trace', 'On');
 echo xdebug_get_function_count();
 var_dump(xdebug_get_function_stack());
 var_dump(debug_backtrace());
+
+

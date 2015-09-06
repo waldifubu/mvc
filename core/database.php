@@ -11,8 +11,8 @@ class Database extends PDO
         try {
             parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME . ';charset=utf8', $DB_USER, $DB_PASS);
             parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $ex) {
-            echo '<h3><br />Catch Connect Error--->>> ' . $ex->getMessage() . '<br /></h3>';
+        } catch(\PDOException $ex) {
+            echo '<h3><br>Error: ' . $ex->getMessage() . '<br></h3>';
             exit;
         }
 	}
