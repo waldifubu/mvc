@@ -1,0 +1,3 @@
+echo Build PhpLoc Statistics
+phploc --count-tests --log-xml=build/logs/phploc.xml -q .
+phpdox

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpdox xmlns="http://xml.phpdox.net/config">
+  <project name="Example" source="${basedir}" workdir="${basedir}/build/api/xml">
+    <collector backend="parser" />
+    <generator output="${basedir}/docs">
+      <!--<build engine="html" output="html"/>-->	  
+	  
+	  <enrich base="${basedir}/build">
+	    <source type="phpcs">			
+			<file name="logs/phpcs.xml" />
+		</source>
+		
+		<source type="phploc">
+			<file name="logs/phploc.xml" />
+		</source>
+	  </enrich>
+	  
+	   <build engine="html" enabled="true" output="html">
+			<file extension="html" />
+		</build>
+	  
+    </generator>
+  </project>
+</phpdox>

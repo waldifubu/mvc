@@ -1,15 +1,18 @@
 <?php
-# Main Controller
+/**
+ * Main Controller
+ */
 namespace Core;
 
 use Util\Auth;
 use Core\Model;
+
 class Controller
 {
     /* @var $view View */
     protected $view;
 
-    /* @var $model Model */
+    /* @var Model */
     protected $model;
 
     /* @var bool */
@@ -21,7 +24,7 @@ class Controller
         if($this->needLogin)
             Auth::handleLogin();
     }
-	
+
 	public function loadModel($name, $modelPath)
 	{	
         $class = '\Model\\'. $name . '_Model';
