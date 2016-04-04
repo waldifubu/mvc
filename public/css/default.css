@@ -1,11 +1,5 @@
 body {  
   padding-top: 70px;
-    
-}
-
-.body1 {
-	background: #f0efcc;
-	font: 14px 'trebuchet ms', arial, sans-serif;
 }
 
 /** Structure */
@@ -51,20 +45,42 @@ form {
 	font: 100% verdana,arial,sans-serif;
 }
 
-form label { 
-	display: block;
-	float: left; 
-	width: 150px; 
-	padding: 0; 
-	margin: 9px 0 0;
-	text-align: right; 
+form label {
+    display: block;
+    float: left;
+    width: 150px;
+    padding: 0;
+    margin: 9px 10px 0;
+    text-align: right;
+}
+
+#login label {
+    margin: 5px 0 0;
+}
+
+#loginBox {
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+	border: 1px solid black;
+	width: 235px;
+	padding: 10px;
+    height: 200px;
+}
+
+#loginBox label, #loginBox input:not([type='submit']) {
+	text-align: left;
 }
 
 form input, form select {
 	width: auto;
-	margin: 5px 0 0 10px;
+	margin-top: 5px;
 	border: 1px solid gray;
 	padding: 4px;
+}
+
+#login input {
+    width: 100%;
 }
 
 form input[type=submit]:hover {

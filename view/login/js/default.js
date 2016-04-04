@@ -20,7 +20,6 @@ $(function() {
                 $.growl.error({title: "Login", message: "Eingabe ungültig!"});
             }
         }, 'json');
-
 	});
 
     /**

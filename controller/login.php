@@ -8,24 +8,25 @@ class Login extends Controller
 {
     public $haveModel = true;
 
-	function __construct() 
-	{
+    public function __construct()
+    {
         $this->view = new View();
-	}
-	
-	public function index() 
-	{				
+    }
+
+    public function index()
+    {
         $this->view->title = 'Login';
-        $this->view->js = array('login/js/default.js', '../public/js/jquery.growl.js','../public/js/jquery-ui.min.js');
+        $this->view->js = array('login/js/default.js', '../public/js/jquery.growl.js');
         $this->view->css = array('../public/css/jquery.growl.css');
-		$this->view->render('login/index');
-	}
+        $this->view->render('login/index');
+    }
 
     public function checkLogin()
     {
         // prevent direct access
+        //echo $_SERVER['HTTP_X_REQUESTED_WITH'];
         $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-        if(!$isAjax) {
+        if (!$isAjax) {
             $user_error = 'Access denied - not an AJAX request...';
             trigger_error($user_error, E_USER_ERROR);
         }

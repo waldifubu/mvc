@@ -8,6 +8,8 @@ Auto-generated from Git log.
  * [master](#master)
 
 ## [master](../../tree/master)
+ * [ba6f0ce04f](../../commit/ba6f0ce04f91139f6c7fca2e1fa0ebc77c865a3c) 2016-04-03T19:35:59+00:00 (Waldemar Dell) - Cosmetic changes
+ * [153803a935](../../commit/153803a935e6e38d573161dd8b8332c797866c83) 2015-09-06T17:23:42+00:00 (Waldemar Dell) - lots of changes
  * [e432e61731](../../commit/e432e61731fb72e49222b28cf0aa220a5417d955) 2015-02-16T18:15:50+00:00 (Waldemar Dell) - Implemented UTF-8 on all pages
  * [f77977c113](../../commit/f77977c113dd2efef60655bf99b610d745cd2f58) 2014-12-23T13:01:47+00:00 (Waldemar Dell) - tool to see changelog
  * [b128c35605](../../commit/b128c35605c03a080d4c117ac6510995e0ad558e) 2014-12-23T12:58:25+00:00 (Waldemar Dell) - changed pics in pizza on the fly
