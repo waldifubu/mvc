@@ -16,8 +16,7 @@ class Login extends Controller
     public function index()
     {
         $this->view->title = 'Login';
-        $this->view->js = array('login/js/default.js', '../public/js/jquery.growl.js');
-        $this->view->css = array('../public/css/jquery.growl.css');
+        $this->view->js = array('login/js/default.js');
         $this->view->render('login/index');
     }
 
@@ -25,7 +24,8 @@ class Login extends Controller
     {
         // prevent direct access
         //echo $_SERVER['HTTP_X_REQUESTED_WITH'];
-        $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+        $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
         if (!$isAjax) {
             $user_error = 'Access denied - not an AJAX request...';
             trigger_error($user_error, E_USER_ERROR);

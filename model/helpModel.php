@@ -4,7 +4,7 @@ namespace Model;
 
 use Core\Model;
 
-class Help_Model extends Model
+class HelpModel extends Model
 {
 	function __construct()
 	{

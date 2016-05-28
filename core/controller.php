@@ -9,13 +9,13 @@ use Core\Model;
 
 class Controller
 {
-    /* @var $view View */
+    /** @var View $view */
     protected $view;
 
-    /* @var Model */
+    /* @var Model $view */
     protected $model;
 
-    /* @var bool */
+    /* @var bool $needLogin */
     protected $needLogin;
 
     public function __construct()
@@ -26,9 +26,9 @@ class Controller
         }
     }
 
-    public function loadModel($name, $modelPath)
+    public function loadModel($name)
     {
-        $class = '\Model\\' . $name . '_Model';
+        $class = '\Model\\' . $name . 'Model';
         $this->model = new $class();
     }
 }

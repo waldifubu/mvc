@@ -12,14 +12,16 @@ Session::init();
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" type="image/x-icon" href="<?= URL ?>public/img/gameboy.ico"/>
     <link rel="stylesheet" href="<?= URL ?>public/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="<?= URL ?>public/css/jquery.growl.min.css"/>
     <link rel="stylesheet" href="<?= URL ?>public/css/default.css"/>
     <script src="<?= URL ?>public/js/jquery.min.js"></script>
     <script src="<?= URL ?>public/js/jquery-ui.min.js"></script>
     <script src="<?= URL ?>public/js/bootstrap.min.js"></script>
+    <script src="<?= URL ?>public/js/store.min.js"></script>
+    <script src="<?= URL ?>public/js/jquery.growl.min.js"></script>
 
     <?php
     if ($this->title != 'Login') {
-        echo '<script src="' . URL . 'public/js/store.min.js"></script>';
         echo '<script src="' . URL . 'public/js/jquery-idleTimeout.min.js"></script>';
         echo '<script src="' . URL . 'public/js/idleTimeout.js"></script>';
     }
@@ -81,8 +83,9 @@ Session::init();
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
                 <li><?= '<h4 style="margin-top:23px">Logged in as: <b>' . $_SESSION['username'] . '</b></h4>' ?></li>
-                <li><a href="<?= URL ?>dashboard/logout">
-                        <button type="button" class="btn btn-danger">Logout</button>
+                <li><a href="#">
+                        <input onclick="$.fn.idleTimeout().logout();"
+                               type="button" class="btn btn-danger" value="Logout"/>
                     </a></li>
                 <?php else : ?>
             </ul>

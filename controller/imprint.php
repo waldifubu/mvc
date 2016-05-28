@@ -5,11 +5,17 @@ use Core\Controller;
 
 class Imprint extends Controller
 {
-    function __construct()
+    /**
+     * Imprint constructor.
+     */
+    public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     *
+     */
     public function index()
     {
         $this->view->title = 'Impressum';

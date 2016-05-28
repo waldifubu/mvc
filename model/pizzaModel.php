@@ -5,7 +5,7 @@ namespace Model;
 
 use Core\Model;
 
-class Pizza_Model extends Model
+class PizzaModel extends Model
 {
 	public function __construct()
     {

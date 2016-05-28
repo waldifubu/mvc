@@ -11,7 +11,7 @@ $(function() {
 
                 setTimeout(function() {
                     $.growl({ title: "Login erfolgreich", message: "Weiterleitung..." });
-                    window.location.href = "/mvc/dashboard";
+                    window.location.href = store.get('lastpage');
                 }, 2300);
             }
 

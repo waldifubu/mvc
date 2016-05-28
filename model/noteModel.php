@@ -3,7 +3,7 @@ namespace Model;
 
 use Core\Model;
 
-class Note_Model extends Model
+class NoteModel extends Model
 {
 	public function __construct()
 	{

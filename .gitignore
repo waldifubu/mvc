@@ -1,4 +1,7 @@
 .idea
 .sonar
-docs/
 build/
+stats
+phpdox.xml
+notagger.php
+.gitignore

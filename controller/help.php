@@ -8,22 +8,22 @@ class Help extends Controller
 {
     public $haveModel = true;
 
-	function __construct() 
-	{
-		parent::__construct();		
-	}
-	
-	public function index() 
-	{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function index()
+    {
         $this->view->title = 'Help';
         $this->view->msg = $this->model->index();
-		$this->view->render('help/index');
-	}
-	
-	public function other($arg = false)
-	{
-		$this->view->msg = $this->model->bla($arg);
-		$this->view->render('help/index');
-	}
-	
+        $this->view->render('help/index');
+    }
+
+    public function other($arg = false)
+    {
+        $this->view->msg = $this->model->bla($arg);
+        $this->view->render('help/index');
+    }
+
 }
