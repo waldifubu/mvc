@@ -1,38 +1,42 @@
-$(function() {
-	$('#login').submit(function(ev) {
+$(function () {
+    $('#login').submit(function (ev) {
         ev.preventDefault();
 
-		var url = $(this).attr('action');
-		var data = $(this).serialize();
+        var url = $(this).attr('action');
+        var data = $(this).serialize();
 
-        $.post(url, data, function(out) {
+        $.post(url, data, function (out) {
             if (out.result == true) {
-                $.growl.notice({ title: "Login", message: "Herzlich willkommen!" });
+                $.growl.notice({title: "Login", message: "Herzlich willkommen!"});
 
-                setTimeout(function() {
-                    $.growl({ title: "Login erfolgreich", message: "Weiterleitung..." });
-                    window.location.href = store.get('lastpage');
+                setTimeout(function () {
+                    $.growl({title: "Login erfolgreich", message: "Weiterleitung..."});
+                    if (store.enabled) {
+                        window.location.href = store.get('lastpage');
+                    } else {
+                        window.location.href = "/mvc/dashboard";
+                    }
                 }, 2300);
             }
 
-            if (out.result == false)  {
+            if (out.result == false) {
                 $("#loginBox").effect("shake");
                 $.growl.error({title: "Login", message: "Eingabe ungültig!"});
             }
         }, 'json');
-	});
+    });
 
     /**
      * Check if Login name is given. If not, nothing happens
      */
-	$('#formPass').keypress(function(e) {
-        if(e.which == 13) {
+    $('#formPass').keypress(function (e) {
+        if (e.which == 13) {
             var check = $("#formLogin").val();
             if (check == '') {
                 e.preventDefault();
                 return false;
             }
         }
-	});
+    });
 
 });

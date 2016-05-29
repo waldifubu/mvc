@@ -24,6 +24,7 @@ Session::init();
     if ($this->title != 'Login') {
         echo '<script src="' . URL . 'public/js/jquery-idleTimeout.min.js"></script>';
         echo '<script src="' . URL . 'public/js/idleTimeout.js"></script>';
+        echo '<script src="' . URL . 'public/js/jquery.hotkey.min.js"></script>';
     }
     ?>
 

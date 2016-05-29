@@ -20,8 +20,10 @@ class UserModel extends Model
 
     public function userSingleList($userid)
     {
-        return $this->db->select('select userid, login, role from ' . USERS_TAB . ' where userid=:userid',
-            array(':userid' => $userid));
+        return $this->db->select(
+            'select userid, login, role from ' . USERS_TAB . ' where userid=:userid',
+            array(':userid' => $userid)
+        );
     }
 
 
@@ -41,7 +43,10 @@ class UserModel extends Model
 
     public function delete($userid)
     {
-        $data = $this->db->select('select role from ' . USERS_TAB . ' where userid=:userid', array(':userid' => $userid));
+        $data = $this->db->select(
+            'select role from ' . USERS_TAB . ' where userid=:userid',
+            array(':userid' => $userid)
+        );
 
         if ($data[0]['role'] == 'owner') {
             return false;

@@ -17,9 +17,9 @@ class Pizza extends Controller
         parent::__construct();
         $this->view->js = array('pizza/js/default.js',
             'pizza/js/jquery.jeditable.min.js',
-            '../public/js/jquery.goup.min.js', '../public/js/jquery.growl.js');
+            '../public/js/jquery.goup.min.js');
 
-        $this->view->css = array('pizza/css/default.css', '../public/css/jquery.growl.css');
+        $this->view->css = array('pizza/css/default.css');
     }
 
     public function index()

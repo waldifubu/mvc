@@ -2,7 +2,7 @@
 // http://jillelaine.github.io/jquery-idleTimeout/
 $(document).ready(function () {
     $(document).idleTimeout({
-        idleTimeLimit: 40,       // 'No activity' time limit in seconds. 1200 = 20 Minutes
+        idleTimeLimit: 300,       // 'No activity' time limit in seconds. 1200 = 20 Minutes
         redirectUrl: '/mvc/dashboard/logout',    // redirect to this url on timeout logout. Set to "redirectUrl: false" to disable redirect
 
         // optional custom callback to perform before logout
@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         // warning dialog box configuration
         enableDialog: true,        // set to false for logout without warning dialog
-        dialogDisplayLimit: 30,   // time to display the warning dialog before logout (and optional callback) in seconds. 180 = 3 Minutes
+        dialogDisplayLimit: 60,   // time to display the warning dialog before logout (and optional callback) in seconds. 180 = 3 Minutes
         dialogTitle: 'Timeout',
         dialogTimeRemaining: 'Restzeit:',
         dialogText: 'Achtung: Aufgrund von Inaktivität steht ein LOGOUT bevor',

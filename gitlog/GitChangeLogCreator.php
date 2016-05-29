@@ -50,6 +50,7 @@ class GitChangeLogCreator
         }
         $this->setHashLength();
     }
+
     /**
      *
      */
@@ -60,6 +61,7 @@ class GitChangeLogCreator
             @fclose($this->fileHandle);
         }
     }
+
     /**
      * @return self
      */
@@ -76,6 +78,7 @@ class GitChangeLogCreator
         $this->contents .= $this->getFileFooter();
         return $this;
     }
+
     /**
      * @return self
      * @throws Exception
@@ -102,6 +105,7 @@ class GitChangeLogCreator
         $this->__destruct();
         return $this;
     }
+
     /**
      * @return string
      */
@@ -109,6 +113,7 @@ class GitChangeLogCreator
     {
         return $this->contents;
     }
+
     /**
      * @return self
      * @throws Exception
@@ -132,11 +137,13 @@ class GitChangeLogCreator
                 }
                 $commits[] = $this->convertLogLine($commit);
             }
+            $commits = array_reverse($commits);
             $this->logs[$v] = implode(PHP_EOL, $commits);
             $nextTag = $v . '..';
         }
         return $this;
     }
+
     /**
      * @return $this
      */
@@ -150,6 +157,7 @@ class GitChangeLogCreator
         sort($this->tags);
         return $this;
     }
+
     /**
      * @param string $value
      *
@@ -160,6 +168,7 @@ class GitChangeLogCreator
         $this->fileFooter = (string)$value;
         return $this;
     }
+
     /**
      * @param string $value
      *
@@ -170,6 +179,7 @@ class GitChangeLogCreator
         $this->fileHeader = (string)$value;
         return $this;
     }
+
     /**
      * @param string $value
      *
@@ -180,6 +190,7 @@ class GitChangeLogCreator
         $this->fileName = (string)$value;
         return $this;
     }
+
     /**
      * @param int $value
      *
@@ -196,6 +207,7 @@ class GitChangeLogCreator
         $this->hashLength = $value;
         return $this;
     }
+
     /**
      * @param string $log
      *
@@ -216,6 +228,7 @@ class GitChangeLogCreator
         $format = ' * [%1$s](../../commit/%2$s) %3$s (%4$s) - %5$s';
         return sprintf($format, $hashName, $hash, $dateTime, $committer, $message);
     }
+
     /**
      * @return string
      */
@@ -223,6 +236,7 @@ class GitChangeLogCreator
     {
         return $this->fileFooter;
     }
+
     /**
      * @return resource
      * @throws Exception
@@ -252,6 +266,7 @@ class GitChangeLogCreator
         }
         return $this->fileHandle;
     }
+
     /**
      * @param string[] $tags
      *
@@ -268,6 +283,7 @@ class GitChangeLogCreator
             $replace,
             $this->fileHeader);
     }
+
     /**
      * @return string
      */
@@ -278,6 +294,7 @@ class GitChangeLogCreator
         }
         return $this->fileName;
     }
+
     /**
      * @return int
      */
@@ -288,6 +305,7 @@ class GitChangeLogCreator
         }
         return $this->hashLength;
     }
+
     /**
      * @param array $tags
      *
@@ -303,6 +321,7 @@ class GitChangeLogCreator
         }
         return $toc;
     }
+
     /**
      * @type string $contents
      */

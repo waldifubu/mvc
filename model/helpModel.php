@@ -6,19 +6,19 @@ use Core\Model;
 
 class HelpModel extends Model
 {
-	function __construct()
-	{
-		//echo 'Help Model';
-	}
-    
+    function __construct()
+    {
+        //echo 'Help Model';
+    }
+
     public function index()
     {
-        return 'Das ist die Hilfe<br />Hier geht es zu <a href="'.URL.'help/other">Other</a>';
+        return 'Das ist die Hilfe<br />Hier geht es zu <a href="' . URL . 'help/other">Other</a>';
     }
-	
-	public function bla($arg)
-	{
-        if(empty($arg)) return 'Kein Parameter angegeben';
-		return 'Parameter: '.$arg;
-	}
+
+    public function bla($arg)
+    {
+        if (empty($arg)) return 'Kein Parameter angegeben';
+        return 'Parameter: ' . $arg;
+    }
 }

@@ -4,6 +4,7 @@ namespace Model;
 use Core\Model;
 use Core\Session;
 use Util\Hash;
+use \PDO;
 
 class LoginModel extends Model
 {
@@ -24,7 +25,7 @@ class LoginModel extends Model
             ':pass' => Hash::create('sha256', $_POST['password'], HASH_PASS_KEY)
         ));
 
-        $data = $sth->fetch();
+        $data = $sth->fetch(PDO::FETCH_ASSOC);
 
         $count = $sth->rowCount();
 

@@ -5,7 +5,7 @@
 namespace Core;
 
 use Util\Auth;
-use Core\Model;
+use Model;
 
 class Controller
 {
@@ -26,7 +26,7 @@ class Controller
         }
     }
 
-    public function loadModel($name)
+    public function loadModel(string $name)
     {
         $class = '\Model\\' . $name . 'Model';
         $this->model = new $class();
