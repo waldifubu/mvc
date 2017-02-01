@@ -26,4 +26,5 @@ Study PHP MVC Example with jQuery applications inside
 * Git tool included
 * UTF-8 in all files
 * Idle-Timer with dialog
-* Autologout implemented, thank store.js save last page before logout
+* Autologout implemented, thanks store.js save last page before logout
+* Hotkeys from Mr. Reissig
